@@ -3,6 +3,7 @@ import path from 'path'
 import jwt from 'jsonwebtoken'
 
 export default function(req,res){
+  let {k:params} = (req.params)
   let {token} = (req.headers)
   let {username} = jwt.verify(token,'shhhh')
   console.log(username);
@@ -12,6 +13,10 @@ export default function(req,res){
 try{
   if(!user) throw "bunday foydalanuvchi toq"
   let products = JSON.parse(fs.readFileSync(path.join(process.cwd(),'database','products.json')))
+  // let param = products.find(f =>f.product_id==params)
+  // if(param){
+  //   res.send(param)
+  // }
   let {subCategoryId,model,color} = req.query
   let arr = []
   if(subCategoryId && model && color){
