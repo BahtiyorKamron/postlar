@@ -10,7 +10,7 @@ import postCat from './controllers/postCat.js'
 import postPro from './controllers/postPro.js'
 import postSub from './controllers/postSub.js'
 let app = express()
-let port = 8998
+let port = process.env.PORT || 4554
 app.post('/register',register)
 app.post('/login',login)
 app.get('/categories',letCategor)
