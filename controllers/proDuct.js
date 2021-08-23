@@ -10,15 +10,15 @@ export default function(req,res){
   let users = fs.readFileSync(path.join(process.cwd(),'database','users.json'))
   users = JSON.parse(users)
   let user = users.find(f => f.username==username)
+  console.log(user);
 try{
   if(!user) throw "bunday foydalanuvchi toq"
-  let products = JSON.parse(fs.readFileSync(path.join(process.cwd(),'database','products.json')))
-  // let param = products.find(f =>f.product_id==params)
-  // if(param){
-  //   res.send(param)
-  // }
+  let products = (fs.readFileSync(path.join(process.cwd(),'database','products.json')))
+  products = JSON.parse(products)
+  console.log(req.query);
   let {subCategoryId,model,color} = req.query
   let arr = []
+  console.log('hey');
   if(subCategoryId && model && color){
     for(let i of products){
       if(i.sub_category_id==subCategoryId && i.model==model && i.color==color){
